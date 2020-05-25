@@ -1,0 +1,144 @@
+html body {
+    font-family: Arial, Helvetica, sans-serif
+}
+
+label, input {
+    display: block;
+    font-size: 80%;
+}
+
+input.text {
+    margin-bottom: 12px;
+    width: 95%;
+    padding: .4em;
+}
+
+fieldset {
+    padding: 0;
+    border: 0;
+    margin-top: 25px;
+    font-size: 75%;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ticketsContent {
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.portrait {
+    width: 120px;
+}
+
+.ticketsItem {
+    width: 420px;
+    border: 1px solid #AE562C; 	
+    background: #fcfbfa;
+    margin: 3px;
+    padding: 2px;
+    display: flex;
+}
+
+.ticketsTitle {
+    width: 100%;
+    background: #fcfbfa;
+    margin: 3px;
+    padding: 2px;
+    display: flex;
+}
+
+#editDialog {
+    display: none;
+}
+
+#addDialog {
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2C5967;
+}
+
+li {
+    float: left;
+}
+ 	
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #FACD62 (yellow) on hover */
+li a:hover {
+    background-color: #FACD62;
+}
+
+li a:focus {
+  color: #FACD62;
+}
+
+h1 {
+    vertical-align: bottom;
+
+    padding-left: 10px;
+
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 50px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: #2C5967;
+
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding-left: 10px;
+    color: #AE562C;
+}
+
+
+h4 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 14px;
+    padding-left: 1px;
+	color: #AE562C;
+}
+
+.panel-info > .panel-heading {  
+	background-color: #FACD62;
+	border-color: #AE562C;
+	font-weight: 600;
+}
+
+.panel-info {
+    border-color: #AE562C;    
+}
+
+
+.btn-success {
+	background-color: #759C6C;
+}
+	
+.panel-title{
+    font-weight: 600;
+}

@@ -1,0 +1,349 @@
+<html>
+<meta charset="utf-8" />
+<head>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
+    integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="
+    crossorigin="anonymous"></script>
+<link
+    href="https://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css"
+    rel="stylesheet">
+
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+        
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.js"></script>  
+        
+	<script src="js/TicketController.js"></script>
+	
+	<link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="css/bootstrap-theme.css" />
+
+<script id="tickets_tpl" type="x-tmpl-mustache">
+<div class="row">
+    <div class="ticketsItem col-sm-3" style="cursor: pointer; padding: 10px">
+        <div class="photos">
+             <img src="img/nopic-120.png" style="width: 120px; height: 120px"></img>
+        </div>
+        <div class="ticketsContent">
+            <h4>{{product}}</h4> 
+            <strong>Creation Date:</strong> {{creationDate}} <br>			
+			Customer: {{customer}} <br> 
+			Partner: {{partner}} <br> 			 
+			<br> <small> <strong>Status:</strong> {{status}}</small>
+        </div>
+    </div>
+</div>
+
+</script>
+
+
+<script id="detail_tpl" type="x-tmpl-mustache">
+
+<div id="editForm" class="col-sm-5 col-md-offset-2">
+    <div class="panel panel-info" class="click-element animate-show">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <div id="formTitle" style="padding: 10px">
+                    Update Ticket
+                    <button class="btn btn-primary" id="delete"
+                        type="button" onclick="deleteTicket()"
+                        style="float: right; position: relative; bottom: 9px;">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        Delete
+                    </button>
+                </div>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="form" novalidate>
+                <input type="text" id="editId" value="{{id}}"
+                    style="display: none;">
+                <div class="photos">
+                    <img src="img/nopic-120.png"
+                        style="width: 120px; height: 120px"></img>
+                </div>
+				<div class="form-group">
+                    <label class="control-label col-xs-3" for="subject">Subject:</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="editSubject"
+                            name="editSubject"
+                            value="{{subject}}"
+                            class="form-control" required>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="control-label col-xs-3" for="summary">Summary:</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="editSummary"
+                            name="editSummary"
+                            value="{{summary}}"
+                            class="form-control" required>
+                    </div>
+                </div>
+ 				<div class="form-group">
+                    <label class="control-label col-xs-3" for="customer">Customer:</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="editCustomer"
+                            name="editCustomer"
+                            value="{{customer}}"
+                            class="form-control" required>
+                    </div>
+                </div>
+ 				<div class="form-group">
+                    <label class="control-label col-xs-3" for="customerId">Customer ID:</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="editCustomerId"
+                            name="editCustomerId"
+                            value="{{customerId}}"
+                            class="form-control" required>
+                    </div>
+                </div>
+ 				<div class="form-group">
+                    <label class="control-label col-xs-3" for="partner">Partner:</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="editPartner"
+                            name="editPartner"
+                            value="{{partner}}"
+                            class="form-control" required>
+                    </div>
+                </div>
+ 				<div class="form-group">
+                    <label class="control-label col-xs-3" for="partnerId">Partner ID:</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="editPartnerId"
+                            name="editPartnerId"
+                            value="{{partnerId}}"
+                            class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-3"
+                        for="editProduct">Product:</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="editProduct"
+                            name="editProduct"
+                            value="{{product}}"
+                            class="form-control" required>
+                    </div>
+                </div>
+
+ 				<div class="form-group">
+                    <label class="control-label col-xs-3" for="status">Status:</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="editStatus"
+                            name="editStatus"
+                            value="{{status}}"
+                            class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="creationDate">Creation Date:</label>
+                    <div class="col-xs-5">
+                        <input type="text" id="editCreationDate"
+                            name="editCreationDate"
+                            value="{{creationDate}}"
+                            class="form-control" required>
+                    </div>
+                </div>
+                <br> <br>
+                <div style="text-align: center;">
+                    <input type="button" tabindex="-1"
+                        class="btn btn-default" value="Cancel"
+                        onclick="loadTickets()"> <input
+                        id="saveButton" type="button" tabindex="-1"
+                        class="btn btn-success" value="Save"
+                        onclick="updateTicket()">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</script>
+
+</head>
+
+<body onload="loadTickets()">
+
+
+
+    <h1>Modern Cloud Ticket App</h1>
+    <ul>
+        <li><a href="#" onclick="loadTickets()">Home</a></li>
+        <li><a href="#" onclick="showTicketForm()">New Ticket</a></li>
+    </ul>
+    <nav>
+        <div class="click-element animate-show" id="home">
+
+            <h2>Tickets</h2>
+            <br>
+            <form>
+
+                <div class="col-xs-3">
+                    <input class="form-control " type="text"
+                        id="searchText">
+                </div>
+                <div class="col-xs-2">
+                    <select id="searchType" class="form-control">
+                    	<option value="status">By Status</option>
+                        <option value="product">By Product</option>
+                        <option value="partner">By Partner</option>
+                        <option value="customer">By Customer</option>
+                        <option value="creation">By Creation Date</option>
+                    </select>
+                </div>
+                <div class="col-xs-1">
+                    <button class="btn btn-success" id="searchButton"
+                        type="button" onclick="search()">
+                        <span class="glyphicon glyphicon-search"></span>
+                        Search
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </nav>
+      <br>
+    <br>
+    <div id="tickets" class="container">LOADING...</div>
+    <div id="notFound" class="alert alert-info col-sm-7"></div>
+    <div id="detail"></div>
+  
+    <div class="col-sm-5 col-md-offset-2" id="ticketForm"
+        style="display: none">
+        <div class="panel panel-info "
+            class="click-element animate-show">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <div style="padding: 10px">
+                        <span id="formTitle">Add New Ticket</span>
+                        <button class="btn btn-primary"
+                            id="deleteButton" type="button"
+                            style="float: right; position: relative; bottom: 9px;">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Delete
+                        </button>
+                    </div>
+                </h3>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" name="form" novalidate>
+                    <input type="text" id="id" value=""
+                        style="display: none;">
+                    <div class="photos">
+                        <img src="img/nopic-120.png"
+                            style="width: 120px; height: 120px"></img>
+                    </div>
+	
+					<div class="form-group">
+	                    <label class="control-label col-xs-3" for="subject">Subject:</label>
+	                    <div class="col-xs-5">
+	                        <input type="text" id="subject"
+	                            name="subject"
+	                            value=""
+	                            class="form-control" required>
+	                    </div>
+	                </div>
+					<div class="form-group">
+	                    <label class="control-label col-xs-3" for="summary">Summary:</label>
+	                    <div class="col-xs-5">
+	                        <input type="text" id="summary"
+	                            name="summary"
+	                            value=""
+	                            class="form-control" >
+	                    </div>
+	                </div>
+	                
+	 				<div class="form-group">
+	                    <label class="control-label col-xs-3" for="customer">Customer:</label>
+	                    <div class="col-xs-5">
+	                        <input type="text" id="customer"
+	                            name="customer"
+	                            value=""
+	                            class="form-control" >
+	                    </div>
+	                </div>
+	 				<div class="form-group">
+	                    <label class="control-label col-xs-3" for="customerId">Customer ID:</label>
+	                    <div class="col-xs-5">
+	                        <input type="text" id="customerId"
+	                            name="customerId"
+	                            value=""
+	                            class="form-control" >
+	                    </div>
+	                </div>
+	                
+	 				<div class="form-group">
+	                    <label class="control-label col-xs-3" for="partner">Partner:</label>
+	                    <div class="col-xs-5">
+	                        <input type="text" id="partner"
+	                            name="{{partner}}"
+	                            value=""
+	                            class="form-control" >
+	                    </div>
+	                </div>
+	 				<div class="form-group">
+	                    <label class="control-label col-xs-3" for="partnerId">Partner ID:</label>
+	                    <div class="col-xs-5">
+	                        <input type="text" id="partnerId"
+	                            name="partnerId"
+	                            value=""
+	                            class="form-control" >
+	                    </div>
+	                </div>
+	                                                                
+                    <div class="form-group">
+                        <label class="control-label col-xs-3"
+                            for="product">Product:</label>
+                        <div class="col-xs-5">
+                            <input type="text" id="product"
+                                name="product" value=""
+                                class="form-control" >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label col-xs-3"
+                            for="status">Status:</label>
+                        <div class="col-xs-5">
+                            <input type="text" id="status" name="status"
+                                value="" class="form-control" >
+                        </div>
+                    </div>     
+                                   
+                    <div class="form-group">
+                        <label class="control-label col-xs-3"
+                            for="creationDate">Creation Date:</label>
+                        <div class="col-xs-5">
+                            <input type="text" id="creationDate"
+                                name="creationDate" value=""
+                                class="form-control">
+                        </div>
+                    </div>
+                    
+                    <br> <br>
+                    <div style="text-align: center;">
+                        <input type="button" tabindex="-1"
+                            class="btn btn-default" value="Cancel"
+                            onclick="loadTickets()"> <input
+                            id="saveButtonx" type="button" tabindex="-1"
+                            class="btn btn-success" value="Save"
+                            onclick="save()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

@@ -1,0 +1,62 @@
+ [
+	{
+		"id": "45434",
+		"subject": "Keys are sticking",
+		"summary": "Customer reports that keys are sticking after spilling a sugar-laden soft-drink on it",
+		"customer": "Tech Experts",
+		"customerId": "46995",
+		"partner": "We-fix-em Computer Services",
+		"partnerId": "7309",
+		"product": "Lenovo Laptop Computer",
+		"status": "Unresolved",
+		"creationDate": "05-14-2020"
+	},
+	{
+		"id": "45436",
+		"subject": "Display blank",
+		"summary": "When powering up unit, the display is blank",
+		"customer": "Smithers Corp",
+		"customerId": "46997",
+		"partner": "We-fix-em Computer Services",
+		"partnerId": "7309",
+		"product": "Idea tablet",
+		"status": "Unresolved",
+		"creationDate": "05-04-2020"
+	},
+	{
+		"id": "45438",
+		"subject": "Wifi not working",
+		"summary": "When powering up, the wifi does not recognize any wireless network",
+		"customer": "Smithers Corp",
+		"customerId": "46997",
+		"partner": "We-fix-em Computer Services",
+		"partnerId": "7311",
+		"product": "Smart TV",
+		"status": "Resolved",
+		"creationDate": "01-31-2020"
+	},
+	{
+		"id": "45440",
+		"subject": "Storage is damaged",
+		"summary": "iPad is not able to store new files",
+		"customer": "Smithers Corp",
+		"customerId": "46997",
+		"partner": "We-fix-em Computer Services",
+		"partnerId": "7311",
+		"product": "iPad",
+		"status": "Resolved",
+		"creationDate": "02-09-2020"
+	},
+	{
+		"id": "45442",
+		"subject": "Display broken",
+		"summary": "Replace the broken screen",
+		"customer": "Tech Experts",
+		"customerId": "46995",
+		"partner": "We-fix-em Computer Services",
+		"partnerId": "7309",
+		"product": "iPhone X",
+		"status": "Unresolved",
+		"creationDate": "05-05-2020"
+	}	
+]
